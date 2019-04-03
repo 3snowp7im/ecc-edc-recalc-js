@@ -197,3 +197,7 @@ function eccEdcCalc(data) {
     eccEdcGenerate(data.subarray(sector * 2352))
   }
 }
+
+try {
+  module.exports = eccEdcCalc
+} catch (e) {}
