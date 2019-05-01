@@ -1,8 +1,4 @@
-(function() {
-  let isNode
-  try {
-    isNode = !!module
-  } catch (e) {}
+(function(self) {
 
   // LUTs for computing ECC/EDC
   const eccFLut = new Uint8Array(256)
@@ -204,9 +200,9 @@
     }
   }
 
-  if (isNode) {
-    module.exports = eccEdcCalc
+  if (self) {
+    self.eccEdcCalc = eccEdcCalc
   } else {
-    window.eccEdcCalc = eccEdcCalc
+    module.exports = eccEdcCalc
   }
-})()
+})(typeof(self) !== 'undefined' ? self : null)
